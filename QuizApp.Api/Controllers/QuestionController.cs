@@ -44,14 +44,19 @@ namespace QuizApp.Api.Controllers
         public IActionResult UpdateQuestion(int id, UpdateQuestionRequest request)
 
         {
-            var updateQuizDto = new UpdateQuizDto()
+            var updateQuestionDto = new UpdateQuestionDto()
             {
                 Id = id,
-                QuizText = request.QuizText,
-                Description = request.Description
+                QuestionText = request.QuestionText,
+                Option1Text = request.Option1Text,
+                Option2Text = request.Option2Text,
+                Option3Text = request.Option3Text,
+                Option4Text = request.Option4Text,
+                QuizId = request.QuizId,
+                CorrectAnswer = request.CorrectAnswer
             };
 
-            var result = _quizService.UpdateQuiz(updateQuizDto);
+            var result = _questionService.UpdateQuestion(updateQuestionDto);
 
             switch (result)
             {
