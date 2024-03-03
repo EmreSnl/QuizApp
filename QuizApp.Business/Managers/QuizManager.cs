@@ -85,5 +85,39 @@ namespace QuizApp.Business.Managers
                 return 0;
             }
         }
+
+        public int DeleteQuiz(int id) 
+        
+        {
+            var entity = _quizRepository.GetById(id);
+
+            if (entity == null) 
+            { 
+                return 0;   
+            }
+
+            try
+            {
+
+                _quizRepository.Delete(id);
+                return 1;
+            }
+
+            catch(Exception) 
+
+            {
+                return -1;
+            
+            
+            
+            }
+
+
+            
+
+
+
+        }
+
     }
 }

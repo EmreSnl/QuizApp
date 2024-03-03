@@ -25,10 +25,7 @@ namespace QuizApp.Data.Entities
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            builder.HasQueryFilter(x => x.IsDeleted == false);
-
-
-
+            //builder.HasQueryFilter(x => x.IsDeleted == false);
             builder.Property(x => x.ModifiedDate)
                 .IsRequired(false);
 

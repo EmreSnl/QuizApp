@@ -17,6 +17,8 @@ namespace QuizApp.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<QuizEntity>().HasQueryFilter(x => x.IsDeleted == false);
+            modelBuilder.Entity<QuestionEntity>().HasQueryFilter(x => x.IsDeleted == false);
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         
             base.OnModelCreating(modelBuilder);

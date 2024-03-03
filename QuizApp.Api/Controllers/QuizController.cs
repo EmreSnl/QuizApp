@@ -81,6 +81,23 @@ namespace QuizApp.Api.Controllers
             return Ok(response);
 
         }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteQuiz(int id)
+        {
+            var result = _quizService.DeleteQuiz(id);
+
+            switch (result)
+            {
+                case 0:
+                    return BadRequest();
+
+                case 1:
+                    return Ok();
+
+                default:
+                    return StatusCode(500);
+            }
+        }
 
 
 

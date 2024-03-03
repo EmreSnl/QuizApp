@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizApp.Data.Entities
+namespace QuizApp.Business.Dtos
 {
-    public class QuestionEntity : BaseEntity
+    public class UpdateQuestionDto
     {
-
+        public int Id { get; set; }
         public string QuestionText { get; set; }
         public string Option1Text { get; set; }
         public string Option2Text { get; set; }
@@ -16,9 +16,6 @@ namespace QuizApp.Data.Entities
         public string Option4Text { get; set; }
         public int QuizId { get; set; }
         public string CorrectAnswer { get; set; }
-
-
-
 
 
     }

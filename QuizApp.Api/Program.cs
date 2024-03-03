@@ -19,6 +19,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<QuizAppContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IQuizService, QuizManager>();
+builder.Services.AddScoped<IQuestionService, QuestionManager>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
