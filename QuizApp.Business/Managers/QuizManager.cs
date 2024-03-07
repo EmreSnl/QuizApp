@@ -112,11 +112,21 @@ namespace QuizApp.Business.Managers
             
             }
 
+        }
 
-            
+        public List<QuizDto> GetAllQuiz()
 
+        {
+            var quizEntites = _quizRepository.GetAll();
 
+            var quizDtos = quizEntites.Select(x => new QuizDto
+            {
+                Id = x.Id,
+                QuizText = x.QuizText,
+                Description = x.Description,
+            }).ToList();
 
+            return quizDtos;
         }
 
     }

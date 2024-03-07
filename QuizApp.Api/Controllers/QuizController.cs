@@ -98,6 +98,22 @@ namespace QuizApp.Api.Controllers
                     return StatusCode(500);
             }
         }
+        [HttpGet]
+        public IActionResult GetAllQuizzes()
+        {
+
+            var quizDtos = _quizService.GetAllQuiz();
+
+            var response = quizDtos.Select(x => new QuizResponse()
+            {
+                Id = x.Id,
+                QuizText = x.QuizText,
+                Description = x.Description
+            }).ToList();
+
+            return Ok(response);
+
+        }
 
 
 

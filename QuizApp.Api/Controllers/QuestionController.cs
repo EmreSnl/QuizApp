@@ -69,5 +69,73 @@ namespace QuizApp.Api.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetQuestion(int id)
+
+        {
+            var questionDto = _questionService.GetQuestion(id);
+
+            if (questionDto == null)
+                return NotFound();
+
+            var response = new QuestionResponse()
+            {
+                Id = questionDto.Id,
+                QuestionText = questionDto.QuestionText,
+                Option1Text = questionDto.Option1Text,
+                Option2Text = questionDto.Option2Text,
+                Option3Text = questionDto.Option3Text,
+                Option4Text = questionDto.Option4Text,
+                CorrectAnswer = questionDto.CorrectAnswer,
+                QuizId = questionDto.QuizId
+
+
+
+            };
+            return Ok(response);
+
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteQuestion(int id)
+        {
+            var result = _questionService.DeleteQuestion(id);
+
+            switch (result)
+            {
+                case 0:
+                    return BadRequest();
+
+                case 1:
+                    return Ok();
+
+                default:
+                    return StatusCode(500);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetAllQuestions()
+        {
+
+            var questionDtos = _questionService.GetAllQuestion();
+
+            var response = questionDtos.Select(x => new QuestionResponse()
+            {
+                Id = x.Id,
+                QuestionText = x.QuestionText,
+                Option1Text = x.Option1Text,
+                Option2Text = x.Option2Text,
+                Option3Text = x.Option3Text,
+                Option4Text = x.Option4Text,
+                CorrectAnswer = x.CorrectAnswer,
+                QuizId = x.QuizId
+            }).ToList();
+
+            return Ok(response);
+
+        }
+
+
     }
 }

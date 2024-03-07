@@ -13,9 +13,11 @@ namespace QuizApp.Business.Services
 
         int UpdateQuiz(UpdateQuizDto updateQuizDto);
 
-        QuizDto GetQuiz(int id);    
+        QuizDto GetQuiz(int id);
 
-        int DeleteQuiz(int id); 
+        int DeleteQuiz(int id);
+
+        List<QuizDto> GetAllQuiz();
 
     }
 }
